@@ -5,7 +5,7 @@ console.log('[Gemini] API Key present:', !!apiKey, 'length:', apiKey.length)
 
 const genAI = new GoogleGenerativeAI(apiKey)
 
-export const geminiModel = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' })
+export const geminiModel = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' })
 
 export async function generateBlogContent({
   hospitalName,
