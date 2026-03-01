@@ -33,10 +33,11 @@ export async function POST(request: NextRequest) {
     })
 
     return NextResponse.json({ content })
-  } catch (error) {
-    console.error('Quick blog generation error:', error)
+  } catch (error: unknown) {
+    const errMsg = error instanceof Error ? error.message : String(error)
+    console.error('Quick blog generation error:', errMsg, error)
     return NextResponse.json(
-      { error: '빠른 블로그 생성에 실패했습니다.' },
+      { error: `빠른 블로그 생성에 실패했습니다: ${errMsg}` },
       { status: 500 }
     )
   }

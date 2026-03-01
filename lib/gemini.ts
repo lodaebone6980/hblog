@@ -1,9 +1,11 @@
 import { GoogleGenerativeAI } from '@google/generative-ai'
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '')
+const apiKey = process.env.GEMINI_API_KEY || ''
+console.log('[Gemini] API Key present:', !!apiKey, 'length:', apiKey.length)
+
+const genAI = new GoogleGenerativeAI(apiKey)
 
 export const geminiModel = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' })
-export const geminiProModel = genAI.getGenerativeModel({ model: 'gemini-2.5-pro-preview-06-05' })
 
 export async function generateBlogContent({
   hospitalName,
